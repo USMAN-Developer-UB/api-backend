@@ -1,11 +1,13 @@
 const {
-  pengguna,
   Sequelize,
-  sequelize
+  sequelize,
+  pengguna
 } = require('../models')
 const flaverr = require('flaverr');
 const bcrypt = require('bcryptjs')
+const { v4: uuidv4 } = require('uuid');
 
+// const pengguna = require('../models/pengguna');
 const library = {}
 
 module.exports = library
@@ -16,6 +18,7 @@ library.create = async (data, transaction) => {
     const { username, email, password, id_role } = data
     const hashPassword = await bcrypt.hash(password, 10)
     const result = await pengguna.create({
+      id_pengguna : uuidv4(),
       username,
       email,
       password: hashPassword,
@@ -24,6 +27,7 @@ library.create = async (data, transaction) => {
     if (!result) {
       throw flaverr('E_FAILED', new Error('Failed to create user'))
     }
+    delete result.dataValues.password
     return {
       success: true,
       result

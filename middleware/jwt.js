@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const env = process.env;
-const response = require('../util/response')
+const response = require('../utils/response')
 const { StatusCodes } = require('http-status-codes')
 
 const generateToken = (userId) => {

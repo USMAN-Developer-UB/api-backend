@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       //menghubungkan ideaplan -> pengguna = many to one = child to parent
-      this.belongsToMany(models.pengguna, {
+      this.belongsTo(models.pengguna, {
         foreignKey: "id_penggunan",
         as: "pengguna",
       });

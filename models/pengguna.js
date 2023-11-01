@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       //menghubungkan pengguna -> role = many to one = child to parent
-      this.belongsToMany(models.role, {
+      this.belongsTo(models.role, {
         foreignKey: "id_role",
         as: "role",
       });

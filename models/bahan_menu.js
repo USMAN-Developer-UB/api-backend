@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       //menghubungkan bahan_menu -> menu = many to one = child to parent
-      this.belongsToMany(models.menu, {
+      this.belongsTo(models.menu, {
         foreignKey: "id_menu",
         as: "menu",
       });

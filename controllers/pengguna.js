@@ -3,7 +3,7 @@ const response = require('../utils/response')
 const { StatusCodes } = require('http-status-codes')
 const transactionRepository = require('../repositories/transaction')
 const jwtMiddleware = require('../middleware/jwt')
-
+const flaverr = require('flaverr')
 
 const library = {}
 module.exports = library
@@ -14,13 +14,13 @@ library.create = async (req, res) => {
     if (transaction.success === false) {
       throw flaverr('E_FAILED', new Error('Failed to create transaction'))
     }
-    const newUser = penggunaRepository.create({ ...req.body }, transaction.data)
+    const newUser = await penggunaRepository.create({ ...req.body }, transaction.data)
     if (newUser.success === false) {
       await transactionRepository.Rollback(transaction.data)
-      throw flaverr('E_FAILED', new Error('Failed to create user'))
+      throw flaverr('E_FAILED', new Error(newUser.err))
     }
     await transactionRepository.Commit(transaction.data)
-    const token = jwtMiddleware.generateToken(newUser.result.id)
+    const token = jwtMiddleware.generateToken(newUser.result.id_pengguna)
     if (!token) {
       throw flaverr('E_FAILED', new Error('Failed to generate token'))
     }
@@ -39,7 +39,7 @@ library.login = async (req, res) => {
     if (user.success === false) {
       throw flaverr('E_FAILED', new Error('Failed to login'))
     }
-    const token = jwtMiddleware.generateToken(user.result.id)
+    const token = jwtMiddleware.generateToken(user.result.id_pengguna)
     if (!token) {
       throw flaverr('E_FAILED', new Error('Failed to generate token'))
     }
