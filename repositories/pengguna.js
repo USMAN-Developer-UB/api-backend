@@ -89,14 +89,11 @@ library.findByEmail = async (email) => {
 
 library.findByID = async (id) => {
   try {
-    const result = await pengguna.findOne({
-      where: {
-        id
-      }
-    })
+    const result = await pengguna.findByPk(id)
     if (!result) {
       throw flaverr('E_NOT_FOUND', new Error('User not found'))
     }
+    delete result.dataValues.password
     return {
       success: true,
       result

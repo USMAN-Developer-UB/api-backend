@@ -54,7 +54,7 @@ library.login = async (req, res) => {
 
 library.profile = async (req, res) => {
   try {
-    const user = await penggunaRepository.profile(req.user.id)
+    const user = await penggunaRepository.findByID(req.user.id)
     if (user.success === false) {
       throw flaverr('E_FAILED', new Error('Failed to get profile'))
     }
