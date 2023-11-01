@@ -32,3 +32,34 @@ library.create = async (req, res) => {
     return response.fail(res, StatusCodes.INTERNAL_SERVER_ERROR, err.message)
   }
 }
+
+library.login = async (req, res) => {
+  try {
+    const user = await penggunaRepository.login(req.body)
+    if (user.success === false) {
+      throw flaverr('E_FAILED', new Error('Failed to login'))
+    }
+    const token = jwtMiddleware.generateToken(user.result.id)
+    if (!token) {
+      throw flaverr('E_FAILED', new Error('Failed to generate token'))
+    }
+    return response.success(res, StatusCodes.OK, {
+      token,
+      user: user.result
+    })
+  } catch (err) {
+    return response.fail(res, StatusCodes.INTERNAL_SERVER_ERROR, err.message)
+  }
+}
+
+library.profile = async (req, res) => {
+  try {
+    const user = await penggunaRepository.profile(req.user.id)
+    if (user.success === false) {
+      throw flaverr('E_FAILED', new Error('Failed to get profile'))
+    }
+    return response.success(res, StatusCodes.OK, user.result)
+  } catch (err) {
+    return response.fail(res, StatusCodes.INTERNAL_SERVER_ERROR, err.message)
+  }
+}
