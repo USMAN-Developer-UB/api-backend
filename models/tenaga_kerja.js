@@ -27,11 +27,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         primaryKey: true,
       },
-      tipe: DataTypes.STRING,
+      tipe: DataTypes.ENUM("Individu", "Grup"),
       posisi: DataTypes.STRING,
       jumlah: DataTypes.INTEGER,
       gaji_posisi: DataTypes.DOUBLE,
-      waktu_gaji: DataTypes.ENUM("harian", "bulanan", "tahunan"),
+      waktu_gaji: DataTypes.ENUM("harian", "mingguan", "bulanan", "tahunan"),
     },
     {
       sequelize,

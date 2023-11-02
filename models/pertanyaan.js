@@ -9,10 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      //menghubungkan biaya_overhead -> ideaplan
-      this.belongsTo(models.ideaplan, {
-        foreignKey: "id_ideaplan",
-        as: "ideaplan",
+
+      // ini adalah blok untuk menghubungkan antar model/table
+      /** one to one -> hasOne(), belongsTo()
+       *  one to many-> hasMany(), belongsToMany()
+       *
+       * has -> itu dipakai ketika menghubungkan parent ke child
+       * belong -> itu dipakai ketika menghubungkan child ke parent
+       */
+
+      //menghubungkan pertanyaan -> jawaban = one to many = parent to child
+      this.hasMany(models.jawaban, {
+        foreignKey: "id_jawaban",
+        as: "jawaban",
       });
     }
   }
@@ -24,11 +33,11 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       pertanyaan: DataTypes.STRING,
-      jawaban: DataTypes.STRING,
-      id_ideaplan: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-      },
+      jenis_pertanyaan: DataTypes.STRING,
+      // id_ideaplan: {
+      //   type: DataTypes.INTEGER,
+      //   primaryKey: true,
+      // },
     },
     {
       sequelize,

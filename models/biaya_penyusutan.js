@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       nama_barang: DataTypes.STRING,
       harga_barang: DataTypes.INTEGER,
       waktu_pakai: DataTypes.DATE,
-      jenis_waktu: DataTypes.ENUM("harian", "bulanan", "tahunan"),
+      jenis_waktu: DataTypes.ENUM("harian", "mingguan", "bulanan", "tahunan"),
     },
     {
       sequelize,
