@@ -34,6 +34,7 @@ module.exports = {
       );
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
+<<<<<<< HEAD
       await queryInterface.createTable(
         "pengguna",
         {
@@ -67,6 +68,31 @@ module.exports = {
           updatedAt: {
             allowNull: false,
             type: Sequelize.DATE,
+=======
+      await queryInterface.createTable("pengguna", {
+        id_pengguna: {
+          defaultValue: Sequelize.UUIDV4,
+          primaryKey: true,
+          type: Sequelize.UUID,
+        },
+        username: {
+          type: Sequelize.STRING,
+          unique: true,
+        },
+        email: {
+          type: Sequelize.STRING,
+          unique: true,
+        },
+        password: {
+          type: Sequelize.STRING,
+        },
+        id_role: {
+          type: Sequelize.UUID,
+          allowNull: false,
+          references: {
+            model: "role",
+            key: "id_role",
+>>>>>>> 9241eadfde10c31c59585b632c0ced42c12df73f
           },
         },
         { transaction }
