@@ -35,6 +35,10 @@ app.use('/role', roleRouter);
 const ideaplanRouter = require('./routes/ideaplan');
 app.use('/ideaplan', ideaplanRouter);
 
+
+const bahanBakuRouter = require('./routes/bahan_baku');
+app.use('/bahan-baku', bahanBakuRouter);
+
 app.use('/', function(req, res, next) {
   res.send('Express REST API');
 });
