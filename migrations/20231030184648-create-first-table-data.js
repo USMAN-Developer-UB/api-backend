@@ -34,41 +34,6 @@ module.exports = {
       );
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
-<<<<<<< HEAD
-      await queryInterface.createTable(
-        "pengguna",
-        {
-          id_pengguna: {
-            defaultValue: Sequelize.UUIDV4,
-            primaryKey: true,
-            type: Sequelize.UUID,
-          },
-          username: {
-            type: Sequelize.STRING,
-          },
-          email: {
-            type: Sequelize.STRING,
-            unique: true,
-          },
-          password: {
-            type: Sequelize.STRING,
-          },
-          id_role: {
-            type: Sequelize.UUID,
-            allowNull: false,
-            references: {
-              model: "role",
-              key: "id_role",
-            },
-          },
-          createdAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-          },
-          updatedAt: {
-            allowNull: false,
-            type: Sequelize.DATE,
-=======
       await queryInterface.createTable("pengguna", {
         id_pengguna: {
           defaultValue: Sequelize.UUIDV4,
@@ -92,11 +57,17 @@ module.exports = {
           references: {
             model: "role",
             key: "id_role",
->>>>>>> 9241eadfde10c31c59585b632c0ced42c12df73f
           },
         },
-        { transaction }
-      );
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+        },
+      }, { transaction });
     });
     await queryInterface.sequelize.transaction(async (transaction) => {
       await queryInterface.createTable(
@@ -403,14 +374,6 @@ module.exports = {
           jenis_pertanyaan: {
             type: Sequelize.STRING,
           },
-          // id_ideaplan: {
-          //   type: Sequelize.UUID,
-          //   allowNull: false,
-          //   references: {
-          //     model: "ideaplan",
-          //     key: "id_ideaplan",
-          //   },
-          // },
           createdAt: {
             allowNull: false,
             type: Sequelize.DATE,
@@ -464,84 +427,6 @@ module.exports = {
         { transaction: t }
       );
     });
-    // await queryInterface.sequelize.transaction(async (t) => {
-    //   await queryInterface.createTable(
-    //     "bmc",
-    //     {
-    //       id_bmc: {
-    //         allowNull: false,
-    //         defaultValue: Sequelize.UUIDV4,
-    //         primaryKey: true,
-    //         type: Sequelize.UUID,
-    //       },
-    //       pertanyaan: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       jawaban: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       id_ideaplan: {
-    //         type: Sequelize.UUID,
-    //         allowNull: false,
-    //         references: {
-    //           model: "ideaplan",
-    //           key: "id_ideaplan",
-    //         },
-    //       },
-    //       createdAt: {
-    //         allowNull: false,
-    //         type: Sequelize.DATE,
-    //       },
-    //       updatedAt: {
-    //         allowNull: false,
-    //         type: Sequelize.DATE,
-    //       },
-    //     },
-    //     { transaction: t }
-    //   );
-    // });
-    // await queryInterface.sequelize.transaction(async (t) => {
-    //   await queryInterface.createTable(
-    //     "swot",
-    //     {
-    //       id_swot: {
-    //         allowNull: false,
-    //         defaultValue: Sequelize.UUIDV4,
-    //         primaryKey: true,
-    //         type: Sequelize.UUID,
-    //       },
-    //       strength: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       weakness: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       opportunity: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       thread: {
-    //         type: Sequelize.STRING,
-    //       },
-    //       id_ideaplan: {
-    //         type: Sequelize.UUID,
-    //         allowNull: false,
-    //         references: {
-    //           model: "ideaplan",
-    //           key: "id_ideaplan",
-    //         },
-    //       },
-    //       createdAt: {
-    //         allowNull: false,
-    //         type: Sequelize.DATE,
-    //       },
-    //       updatedAt: {
-    //         allowNull: false,
-    //         type: Sequelize.DATE,
-    //       },
-    //     },
-    //     { transaction: t }
-    //   );
-    // });
     await queryInterface.sequelize.transaction(async (t) => {
       await queryInterface.createTable(
         "hasil_skor",
@@ -581,12 +466,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
     await queryInterface.sequelize.transaction(async (transaction) => {
       await queryInterface.dropTable("role", { transaction });
     });
@@ -620,14 +499,8 @@ module.exports = {
     await queryInterface.sequelize.transaction(async (t) => {
       await queryInterface.dropTable("jawaban", { transaction: t });
     });
-    // await queryInterface.sequelize.transaction(async (t) => {
-    //   await queryInterface.dropTable("swot", { transaction: t });
-    // });
     await queryInterface.sequelize.transaction(async (t) => {
       await queryInterface.dropTable("hasil_skor", { transaction: t });
     });
-    // await queryInterface.sequelize.transaction(async (t) => {
-    //   await queryInterface.dropTable("brm", { transaction: t });
-    // });
   },
 };
