@@ -108,10 +108,10 @@ library.findByID = async (id) => {
 
 library.login = async (data) => {
   try {
-    const { username, password } = data
+    const { email, password } = data
     const result = await pengguna.findOne({
       where: {
-        username,
+        email,
       }
     })
     if (!result) {

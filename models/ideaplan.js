@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       //menghubungkan ideaplan -> menu = one to many = parent to child
-      this.hasMany(models.menu, {
+      this.hasOne(models.menu, {
         foreignKey: "id_menu",
         as: "menu",
       });

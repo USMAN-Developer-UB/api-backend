@@ -54,3 +54,21 @@ library.findByUser = async (user) => {
     }
   }
 }
+
+library.findAll = async () => {
+  try {
+    const result = await ideaplan.findAll()
+    if (!result) {
+      throw flaverr('E_NOT_FOUND', new Error('Idea plan not found'))
+    }
+    return {
+      success: true,
+      result
+    }
+  } catch (err) {
+    return {
+      success: false,
+      err
+    }
+  }
+}
