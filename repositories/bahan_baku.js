@@ -20,7 +20,7 @@ library.create = async (data, id_ideaplan, transaction) => {
       nama_menu: item.nama_menu,
       hari: item.hari,
       porsi: item.porsi,
-      id_ideaplanw
+      id_ideaplan
     }
     menuArray.push(payload)
     item.bahan_menu.forEach(async (bahan) => {
