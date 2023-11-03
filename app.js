@@ -32,10 +32,12 @@ app.use('/pengguna', penggunaRouter);
 const roleRouter = require('./routes/role');
 app.use('/role', roleRouter);
 
+const ideaplanRouter = require('./routes/ideaplan');
+app.use('/ideaplan', ideaplanRouter);
+
 app.use('/', function(req, res, next) {
   res.send('Express REST API');
 });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

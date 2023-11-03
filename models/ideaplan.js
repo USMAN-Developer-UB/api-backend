@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       //menghubungkan ideaplan -> pengguna = many to one = child to parent
       this.belongsTo(models.pengguna, {
-        foreignKey: "id_penggunan",
+        foreignKey: "id_pengguna",
         as: "pengguna",
       });
 
@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       nama_ideaplan: DataTypes.STRING,
-      nama_bisnis: DataTypes.STRING,
+      komentar_mentor: DataTypes.STRING,
+      nilai_mentor: DataTypes.INTEGER,
       id_pengguna: {
         type: DataTypes.INTEGER,
         primaryKey: true,
