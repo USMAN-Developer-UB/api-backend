@@ -19,16 +19,15 @@ module.exports = (sequelize, DataTypes) => {
   hpp.init(
     {
       id_hpp: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       nama_menu: DataTypes.STRING,
       harga_menu_sebelum: DataTypes.DOUBLE,
       persen_laba: DataTypes.INTEGER,
       harga_menu_setelah: DataTypes.DOUBLE,
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
     },

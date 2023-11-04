@@ -19,12 +19,11 @@ module.exports = (sequelize, DataTypes) => {
   biaya_penyusutan.init(
     {
       id_biaya_penyusutan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
       nama_barang: DataTypes.STRING,

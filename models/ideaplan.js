@@ -25,15 +25,14 @@ module.exports = (sequelize, DataTypes) => {
   ideaplan.init(
     {
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       nama_ideaplan: DataTypes.STRING,
       komentar_mentor: DataTypes.STRING,
       nilai_mentor: DataTypes.INTEGER,
       id_pengguna: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
     },

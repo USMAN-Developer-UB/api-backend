@@ -25,15 +25,14 @@ module.exports = (sequelize, DataTypes) => {
   menu.init(
     {
       id_menu: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       nama_menu: DataTypes.STRING,
       hari: DataTypes.STRING,
       porsi: DataTypes.STRING,
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
     },

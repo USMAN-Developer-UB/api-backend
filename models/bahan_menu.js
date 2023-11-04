@@ -19,15 +19,14 @@ module.exports = (sequelize, DataTypes) => {
   bahan_menu.init(
     {
       id_bahan_menu: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       nama_bahan: DataTypes.STRING,
       harga_bahan: DataTypes.DOUBLE,
       berat_bahan: DataTypes.DOUBLE,
       jenis_berat: DataTypes.ENUM("kg", "gram", "liter", "mililiter"),
-      id_menu: DataTypes.INTEGER,
+      id_menu: DataTypes.UUID,
     },
     {
       sequelize,

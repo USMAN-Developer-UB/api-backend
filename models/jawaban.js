@@ -25,17 +25,16 @@ module.exports = (sequelize, DataTypes) => {
   jawaban.init(
     {
       id_jawaban: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       jawaban: DataTypes.STRING,
       id_pertanyaan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
     },

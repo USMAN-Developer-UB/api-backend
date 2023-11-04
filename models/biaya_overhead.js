@@ -27,12 +27,11 @@ module.exports = (sequelize, DataTypes) => {
   biaya_overhead.init(
     {
       id_biaya_overhead: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
       },
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
       tipe_biaya: DataTypes.STRING,
