@@ -133,71 +133,7 @@ library.findAll = async () => {
   }
 };
 
-library.findByIdUser = async (id_ideaplan) => {
-  try {
-    const result = await ideaplan.findOne({
-      where: {
-        id_ideaplan: id_ideaplan,
-      },
-      include: [
-        {
-          model: tenaga_kerja,
-          as: "tenaga_kerja",
-        },
-        {
-          model: hasil_skor,
-          as: "hasil_skor",
-        },
-        {
-          model: jawaban,
-          as: "jawaban",
-          include: [
-            {
-              model: pertanyaan,
-              as: "pertanyaan",
-            },
-          ],
-        },
-        {
-          model: hpp,
-          as: "hpp",
-        },
-        {
-          model: biaya_penyusutan,
-          as: "biaya_penyusutan",
-        },
-        {
-          model: menu,
-          as: "menu",
-          include: [
-            {
-              model: bahan_menu,
-              as: "bahan_menu",
-            },
-          ],
-        },
-        {
-          model: biaya_overhead,
-          as: "biaya_overhead",
-        },
-      ],
-    });
-    if (!result) {
-      throw flaverr("E_NOT_FOUND", new Error("Idea plan not found"));
-    }
-    return {
-      success: true,
-      result,
-    };
-  } catch (err) {
-    return {
-      success: false,
-      err,
-    };
-  }
-};
-
-library.findByIdMentor = async (id_ideaplan) => {
+library.findById = async (id_ideaplan) => {
   try {
     const result = await ideaplan.findOne({
       where: {
