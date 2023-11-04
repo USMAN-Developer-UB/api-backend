@@ -14,12 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id_ideaplan",
         as: "ideaplan",
       });
-
       // //menghubungkan menu -> bahan_menu = one to many = parent to child
-      // this.hasMany(models.bahan_menu, {
-      //   foreignKey: "id_bahan_menu",
-      //   as: "bahan_menu",
-      // });
+      this.hasMany(models.bahan_menu, {
+        foreignKey: "id_menu",
+        as: "bahan_menu",
+      });
     }
   }
   menu.init(

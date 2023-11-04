@@ -45,6 +45,9 @@ app.use('/tenaga-kerja', tenagaKerjaRouter);
 const biayaOverheadRouter = require('./routes/biaya_overhead');
 app.use('/biaya-overhead', biayaOverheadRouter);
 
+const biayaPenyusutanRouter = require('./routes/biaya_penyusutan');
+app.use('/biaya-penyusutan', biayaPenyusutanRouter);
+
 app.use('/', function(req, res, next) {
   res.send('Express REST API');
 });

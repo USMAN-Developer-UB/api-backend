@@ -16,10 +16,24 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       //menghubungkan ideaplan -> menu = one to many = parent to child
-      this.hasOne(models.menu, {
-        foreignKey: "id_menu",
+      this.hasMany(models.menu, {
+        foreignKey: "id_ideaplan",
         as: "menu",
       });
+
+      //menghubungkan ideaplan -> biaya_overhead = one to many = parent to child
+      this.hasMany(models.biaya_overhead, {
+        foreignKey: "id_ideaplan",
+        as: "biaya_overhead",
+      });
+
+      //menghubungkan ideaplan -> tenaga_kerja = one to many = parent to child
+      this.hasMany(models.tenaga_kerja, {
+        foreignKey: "id_ideaplan",
+        as: "tenaga_kerja",
+      });
+
+
     }
   }
   ideaplan.init(

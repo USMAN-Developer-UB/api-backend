@@ -1,5 +1,9 @@
 const {
   ideaplan,
+  tenaga_kerja,
+  bahan_menu,
+  biaya_overhead,
+  menu,
   Sequelize,
   sequelize
 } = require('../models')
@@ -37,7 +41,27 @@ library.findByUser = async (user) => {
     const result = await ideaplan.findOne({
       where: {
         id_pengguna: user
-      }
+      },
+      include : [
+        {
+          model: tenaga_kerja,
+          as: 'tenaga_kerja'
+        },
+        {
+          model: menu,
+          as: 'menu',
+          include: [
+            {
+              model: bahan_menu,
+              as: 'bahan_menu'
+            }
+          ]
+        },
+        {
+          model: biaya_overhead,
+          as: 'biaya_overhead'
+        }
+      ]
     })
     if (!result) {
       throw flaverr('E_NOT_FOUND', new Error('Idea plan not found'))

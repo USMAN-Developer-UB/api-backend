@@ -1,4 +1,4 @@
-const biayaOverheadRepository = require('../repositories/biaya_overhead');
+const biayaPenyusutanRepository = require('../repositories/biaya_penyusutan');
 const response = require('../utils/response')
 const { StatusCodes } = require('http-status-codes')
 const transactionRepository = require('../repositories/transaction')
@@ -13,13 +13,13 @@ library.create = async (req, res) => {
     if (transaction.success === false) {
       throw flaverr('E_FAILED', new Error('Failed to create transaction'))
     }
-    const newBiayaOverhead = await biayaOverheadRepository.create({ ...req.body }, transaction.data)
-    if (newBiayaOverhead.success === false) {
+    const newBiayaPenyusutan = await biayaPenyusutanRepository.create({ ...req.body }, transaction.data)
+    if (newBiayaPenyusutan.success === false) {
       await transactionRepository.Rollback(transaction.data)
-      throw flaverr('E_FAILED', new Error(newBiayaOverhead.err))
+      throw flaverr('E_FAILED', new Error(newBiayaPenyusutan.err))
     }
     await transactionRepository.Commit(transaction.data)
-    return response.success(res, StatusCodes.CREATED, newBiayaOverhead.result)
+    return response.success(res, StatusCodes.CREATED, newBiayaPenyusutan.result)
   } catch (err) {
     return response.fail(res, StatusCodes.INTERNAL_SERVER_ERROR, err.message)
   }
