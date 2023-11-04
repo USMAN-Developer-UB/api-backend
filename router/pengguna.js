@@ -15,7 +15,9 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
   //ambil data
   let data = await pengguna
-    .findAll()
+    .findAll({
+      include: [{ all: true, nested: true }],
+    })
     .then((result) => {
       res.json({
         data: result,
