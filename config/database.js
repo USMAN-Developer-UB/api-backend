@@ -3,7 +3,7 @@ const env = process.env;
 
 const sequelize = new Sequelize(env.DB_NAME, env.DB_USERNAME, env.DB_PASSWORD , {
     host: env.DB_HOST,
-    dialect: 'mariadb',
+    dialect: 'mysql',
     port: env.DB_PORT,
     pool: {
         max: 5,
