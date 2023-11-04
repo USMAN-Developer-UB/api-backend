@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const { v4: uuidv4 } = require("uuid");
 module.exports = (sequelize, DataTypes) => {
   class tenaga_kerja extends Model {
     /**
@@ -18,18 +19,18 @@ module.exports = (sequelize, DataTypes) => {
   }
   tenaga_kerja.init(
     {
-      id_swot: {
-        type: DataTypes.INTEGER,
+      id_tenaga_kerja: {
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: uuidv4(),
       },
       id_ideaplan: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
       },
       tipe: DataTypes.ENUM("Individu", "Grup"),
       posisi: DataTypes.STRING,
-      jumlah: DataTypes.INTEGER,
+      jumlah: DataTypes.UUID,
       gaji_posisi: DataTypes.DOUBLE,
       waktu_gaji: DataTypes.ENUM("harian", "mingguan", "bulanan", "tahunan"),
     },

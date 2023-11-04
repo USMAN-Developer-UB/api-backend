@@ -39,6 +39,9 @@ app.use('/ideaplan', ideaplanRouter);
 const bahanBakuRouter = require('./routes/bahan_baku');
 app.use('/bahan-baku', bahanBakuRouter);
 
+const tenagaKerjaRouter = require('./routes/tenaga_kerja');
+app.use('/tenaga-kerja', tenagaKerjaRouter);
+
 app.use('/', function(req, res, next) {
   res.send('Express REST API');
 });

@@ -1,8 +1,6 @@
 const roleRepository = require('../repositories/role');
 const response = require('../utils/response')
 const { StatusCodes } = require('http-status-codes')
-const transactionRepository = require('../repositories/transaction')
-const jwtMiddleware = require('../middleware/jwt')
 const flaverr = require('flaverr')
 
 const library = {}
