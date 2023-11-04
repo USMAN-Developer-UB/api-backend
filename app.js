@@ -48,6 +48,9 @@ app.use('/biaya-overhead', biayaOverheadRouter);
 const biayaPenyusutanRouter = require('./routes/biaya_penyusutan');
 app.use('/biaya-penyusutan', biayaPenyusutanRouter);
 
+const pertanyaanJawabanRouter = require('./routes/pertanyaan_jawaban');
+app.use('/pertanyaan-jawaban', pertanyaanJawabanRouter);
+
 app.use('/', function(req, res, next) {
   res.send('Express REST API');
 });
