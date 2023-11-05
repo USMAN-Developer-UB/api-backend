@@ -1,4 +1,4 @@
-const { ideaplan, tenaga_kerja, bahan_menu, biaya_overhead, menu, Sequelize, sequelize } = require("../models");
+const { ideaplan,biaya_penyusutan, tenaga_kerja, bahan_menu, biaya_overhead, hpp, menu, jawaban, pertanyaan, Sequelize, sequelize } = require("../models");
 const flaverr = require("flaverr");
 const { v4: uuidv4 } = require("uuid");
 
@@ -41,6 +41,24 @@ library.findByUser = async (user) => {
         {
           model: tenaga_kerja,
           as: "tenaga_kerja",
+        },
+        {
+          model: jawaban,
+          as: "jawaban",
+          include: [
+            {
+              model: pertanyaan,
+              as: "pertanyaan",
+            },
+          ],
+        },
+        {
+          model: hpp,
+          as: "hpp",
+        },
+        {
+          model: biaya_penyusutan,
+          as: "biaya_penyusutan",
         },
         {
           model: menu,

@@ -8,7 +8,7 @@ module.exports = library;
 library.create = async (data, transaction) => {
   const { hpps } = data;
   hpps.forEach(async (item) => {
-    item.id_biaya_overhead = uuidv4();
+    item.id_hpp = uuidv4();
   });
   try {
     await hpp.bulkCreate(hpps, { transaction });

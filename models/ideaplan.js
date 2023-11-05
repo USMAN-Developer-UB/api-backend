@@ -33,6 +33,20 @@ module.exports = (sequelize, DataTypes) => {
         as: "tenaga_kerja",
       });
 
+      this.hasMany(models.jawaban, {
+        foreignKey: "id_ideaplan",
+        as: "jawaban",
+      });
+
+      this.hasMany(models.hpp, {
+        foreignKey: "id_ideaplan",
+        as: "hpp",
+      });
+
+      this.hasMany(models.biaya_penyusutan, {
+        foreignKey: "id_ideaplan",
+        as: "biaya_penyusutan",
+      });
 
     }
   }
